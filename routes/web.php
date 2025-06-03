@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('plantilla');
 });
+
+Route::resource('bancos', App\Http\Controllers\BancoController::class);
+Route::resource('categorias', App\Http\Controllers\CategoriaController::class);

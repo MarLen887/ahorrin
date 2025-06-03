@@ -1,0 +1,88 @@
+/* Contenido de variables-colores.css */
+:root {
+  --color-custom-lightest: #F0F3FA;
+  --color-custom-paleblue: #D5DEEF;
+  --color-custom-lavender: #B1C9EF;
+  --color-custom-cornflower: #8AAEE0;
+  --color-custom-cerulean: #628ECB;
+  --color-custom-darkblue: #395886;
+}
+body {
+  background-color: var(--color-custom-paleblue);
+}
+.seccion-principal {
+  background-color: var(--color-custom-paleblue);
+}
+
+/* Estilos para el botón AÑADIR con el color darkblue */
+.btn-color-custom-darkblue {
+  background-color: var(--color-custom-darkblue);
+  color: #fff; /* Define un color de texto que contraste, ej. blanco */
+  border-color: var(--color-custom-darkblue); /* Opcional, para que el borde coincida */
+}
+
+/* Estilos para las celdas de la tabla (encabezados y datos) */
+.tabla-estilizada th,
+.tabla-estilizada td {
+  background-color: var(--color-custom-paleblue); /* Fondo azul pálido */
+  border-color: var(--color-custom-cerulean);    /* Bordes azul cerúleo */
+  color: #212529; /* Color de texto oscuro para contraste */
+}
+
+/* Estilo para el borde exterior de la tabla completa */
+.tabla-estilizada {
+  border-color: var(--color-custom-cerulean); /* Bordes azul cerúleo para el exterior */
+}
+
+/* Ajuste para el efecto hover de Bootstrap (.table-hover) */
+/* Esto asegura que el hover se vea bien con tus nuevos colores */
+.tabla-estilizada tbody tr:hover th,
+.tabla-estilizada tbody tr:hover td {
+  background-color: var(--color-custom-lavender); /* Un tono ligeramente más oscuro/diferente para el hover, como tu color lavanda */
+                                                  /* o puedes elegir otro como #c1d2e8 (un tono más oscuro de paleblue) */
+  color: #212529; /* Mantiene el texto oscuro */
+  /* border-color: var(--color-custom-cerulean); // El color del borde no suele necesitar cambiar en hover */
+}
+
+.btn-color-custom-cerulean {
+  background-color: var(--color-custom-cerulean);
+  color: #fff; /* Texto blanco */
+  border-color: var(--color-custom-cerulean);
+}
+
+.btn-color-custom-cerulean:hover {
+  background-color: #5076a7; /* Un tono más oscuro de --color-custom-cerulean para hover */
+  color: #fff;
+  border-color: #486994; /* Ajusta el borde en hover */
+}
+
+.btn-color-custom-cerulean:focus, .btn-color-custom-cerulean.focus {
+  box-shadow: 0 0 0 0.2rem rgba(98, 142, 203, 0.5); /* Sombra con el color base */
+}
+
+.btn-color-custom-cerulean:active, .btn-color-custom-cerulean.active {
+  background-color: #486994; /* Aún más oscuro para el estado activo */
+  border-color: #3f5b81;
+}
+
+/* Estilo para el botón Azul Oscuro Cancelar )  */
+.btn-color-custom-darkblue {
+  background-color: var(--color-custom-darkblue);
+  color: #fff; /* Texto blanco */
+  border-color: var(--color-custom-darkblue);
+}
+
+.btn-color-custom-darkblue:hover {
+  background-color: #2a4365; /* Un tono más oscuro de --color-custom-darkblue */
+  color: #fff;
+  border-color: #233853;
+}
+
+.btn-color-custom-darkblue:focus, .btn-color-custom-darkblue.focus {
+  box-shadow: 0 0 0 0.2rem rgba(57, 88, 134, 0.5); /* Sombra con el color base */
+}
+
+.btn-color-custom-darkblue:active, .btn-color-custom-darkblue.active {
+  background-color: #233853; /* Aún más oscuro para el estado activo */
+  border-color: #1c2e41;
+}
