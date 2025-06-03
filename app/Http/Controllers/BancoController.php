@@ -16,7 +16,7 @@ class BancoController extends Controller
     public function index()
     {
         $bancos = Banco::all(); // Obtiene todos los registros de la tabla 'bancos'
-        return view('bancos.index', compact('bancos')); // Retorna una vista (debes crearla) con los bancos
+        return view('bancos', compact('bancos')); // Retorna una vista (debes crearla) con los bancos
     }
 
     /**
