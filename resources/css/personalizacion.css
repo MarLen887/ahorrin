@@ -1,0 +1,236 @@
+/* ****************************************************** */
+/* ESTILOS ESPECÍFICOS DEL DASHBOARD                  */
+/* ****************************************************** */
+
+/* General Dashboard Layout */
+.dashboard-container {
+    background-color: #e0e6f6; /* Fondo general similar al de la imagen */
+    min-height: calc(100vh - 56px); /* Ocupa el resto de la altura, ajusta por navbar */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    box-sizing: border-box;
+    /* margin-top: -20px;
+    margin-bottom: -20px; */ /* Estos pueden ser ajustados o removidos si seccion-principal ya tiene padding */
+}
+/* Ajuste para que seccion-principal no agregue padding extra si ya lo tiene dashboard-container */
+.seccion-principal.dashboard-container {
+    padding: 0; /* Dashboard-container manejará su propio padding */
+}
+
+/* Header */
+.header-dashboard {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+
+.header-title {
+    color: #4A4E69; /* Color de texto oscuro */
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Balance Total Card */
+.card-balance-total {
+    background-color: #4A4E69; /* Azul oscuro de la tarjeta */
+    color: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Límite para pantallas grandes */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+.balance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.balance-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.card-icon {
+    font-size: 1.8rem; /* Tamaño del icono de la cartera */
+}
+
+.balance-amount {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.balance-percentage {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block; /* Para que el fondo solo ocupe el texto */
+}
+
+.balance-percentage.positive {
+    background-color: #6cbf3d; /* Verde para positivo */
+    color: #fff;
+}
+
+.balance-percentage.negative {
+    background-color: #dc3545; /* Rojo para negativo */
+    color: #fff;
+}
+
+.balance-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #d1d1d1;
+}
+
+.action-icon {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Card List (right side) */
+.card-list {
+    display: flex;
+    flex-direction: column; /* Apila las tarjetas verticalmente */
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Límite para pantallas grandes */
+    gap: 15px; /* Espacio entre las tarjetas */
+    margin-bottom: 80px; /* Espacio para el bottom-nav fijo */
+}
+
+.card-item {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+/* Specific card icon colors */
+.card-icon-purple { background-color: #6a0dad; } /* O un púrpura similar al de la imagen */
+.card-icon-red { background-color: #dc3545; }
+.card-icon-gray { background-color: #6c757d; }
+
+.card-amounts {
+    flex-grow: 1; /* Ocupa el espacio restante */
+}
+
+.card-current-amount {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-prev-amount {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.card-percentage {
+    text-align: right;
+    font-weight: 600;
+}
+
+.card-percentage-main {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.card-percentage-change {
+    font-size: 0.9rem;
+    padding: 3px 8px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.card-percentage.positive .card-percentage-change {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Texto verde oscuro */
+}
+
+.card-percentage.negative .card-percentage-change {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24; /* Texto rojo oscuro */
+}
+
+
+/* Responsive Layout for larger screens (e.g., tablet/desktop) */
+@media (min-width: 768px) {
+    .dashboard-container {
+        flex-direction: row; /* En fila para pantallas más grandes */
+        justify-content: center;
+        align-items: flex-start; /* Alinea arriba */
+        gap: 40px; /* Espacio entre los dos bloques */
+        padding-top: 40px; /* Más padding superior en desktop */
+    }
+
+    .card-balance-total, .card-list {
+        width: 45%; /* Ajusta el ancho para que quepan en dos columnas */
+        max-width: 500px; /* Ajusta el tamaño máximo si es necesario */
+    }
+    .header-dashboard {
+        position: absolute; /* Header en posición absoluta para que no interfiera con flexbox */
+        top: 80px; /* Ajustar según tu navbar */
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        white-space: nowrap; /* Evita que el título se rompa */
+    }
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4A4E69; /* Color de fondo de la barra inferior */
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.bottom-nav .nav-item {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.bottom-nav .nav-item.active {
+    opacity: 1;
+    /* Puedes añadir un estilo para el activo, como un borde inferior o un color ligeramente diferente */
+    /* border-bottom: 3px solid #F9A826; */
+}
+
+.bottom-nav .nav-item:hover {
+    opacity: 1;
+}

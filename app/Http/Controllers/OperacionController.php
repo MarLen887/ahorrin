@@ -17,7 +17,9 @@ class OperacionController extends Controller
     {
         // Carga las relaciones para mostrar el nombre de la categoría, usuario y banco
         $operaciones = Operacion::with(['categoria', 'usuario', 'banco'])->get();
-        return view('operaciones', compact('operaciones'));
+        $bancos = Banco::all();
+        $categorias = Categoria::all();
+        return view('operaciones', compact('categorias','bancos','operaciones'));
     }
 
     /**
@@ -37,19 +39,20 @@ class OperacionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+         //dd($request->all());
+      $request->validate([
             'tipo_operacion' => 'required|in:Ingreso,Gasto',
             'tipo_pago' => 'required|in:Tarjeta,Efectivo',
             'monto' => 'required|numeric|min:0.01',
             'fecha' => 'required|date',
             'categoria_id' => 'required|exists:categorias,id', // Valida que la categoría exista
-           // 'usuario_id' => 'required|exists:users,id',       // Valida que el usuario exista
+           'usuario_id' => 'required|exists:users,id',       // Valida que el usuario exista
             'banco_id' => 'required|exists:bancos,id',         // Valida que el banco exista
         ]);
 
         Operacion::create($request->all());
 
-        return redirect()->route('operaciones')
+        return redirect()->route('operaciones.index')
                          ->with('success', 'Operación creada exitosamente.');
     }
 
