@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('bancos', App\Http\Controllers\BancoController::class);
-Route::resource('categorias', App\Http\Controllers\CategoriaController::class);
+Route::resource('operaciones', App\Http\Controllers\OperacionController::class);

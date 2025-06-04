@@ -29,7 +29,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+         $request->validate([
             'establecimiento' => 'required|string|max:255',
             'tipo_categoria' => 'required|string|max:255',
         ]);
@@ -38,6 +38,7 @@ class CategoriaController extends Controller
 
         return redirect()->route('categorias.index')
                          ->with('success', 'Categoría creada exitosamente.');
+    
     }
 
     /**
