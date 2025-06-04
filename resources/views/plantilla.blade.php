@@ -44,23 +44,29 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Cartera Inteligente</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link @if(Request::is('bancos') || Request::is('bancos/*')) active @endif" aria-current="page" href="{{ route('bancos.index') }}">Bancos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if(Request::is('operaciones') || Request::is('operaciones/*')) active @endif" href="{{ url('/operaciones') }}">Operación</a>
-                    </li>
-                </ul>
-            </div>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Cartera Inteligente</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    {{-- El enlace para Bancos --}}
+                    <a class="nav-link @if(Request::is('bancos') || Request::is('bancos/*')) active @endif" aria-current="page" href="{{ route('bancos.index') }}">Bancos</a>
+                </li>
+                <li class="nav-item">
+                    {{-- El enlace para Categorías --}}
+                    <a class="nav-link @if(Request::is('categorias') || Request::is('categorias/*')) active @endif" href="{{ route('categorias.index') }}">Categorías</a>
+                </li>
+                <li class="nav-item">
+                    {{-- El enlace para Operaciones --}}
+                    <a class="nav-link @if(Request::is('operaciones') || Request::is('operaciones/*')) active @endif" href="{{ url('/operaciones') }}">Operación</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
     <div class="container-fluid">
         @yield('contenido')
     </div>
