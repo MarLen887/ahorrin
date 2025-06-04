@@ -86,9 +86,22 @@
         </div>
     </nav>
     <div class="container-fluid">
+        {{-- Mensajes de éxito --}}
+        @if (session('success'))
+            <div class="alert alert-success mt-3" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        {{-- Mensajes de error (si los envías desde el controlador) --}}
+        @if (session('error'))
+            <div class="alert alert-danger mt-3" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
+
         @yield('contenido')
     </div>
-    {{-- IMPORTANTE: Scripts de JavaScript al final del body --}}
     {{-- Carga de librerías JS primero --}}
     <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     {{-- Carga de SweetAlert2 JS si lo usas para las alertas --}}
