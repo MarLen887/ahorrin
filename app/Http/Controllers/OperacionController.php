@@ -17,7 +17,7 @@ class OperacionController extends Controller
     {
         // Carga las relaciones para mostrar el nombre de la categoría, usuario y banco
         $operaciones = Operacion::with(['categoria', 'usuario', 'banco'])->get();
-        return view('operaciones.index', compact('operaciones'));
+        return view('operaciones', compact('operaciones'));
     }
 
     /**
@@ -43,13 +43,13 @@ class OperacionController extends Controller
             'monto' => 'required|numeric|min:0.01',
             'fecha' => 'required|date',
             'categoria_id' => 'required|exists:categorias,id', // Valida que la categoría exista
-            'usuario_id' => 'required|exists:users,id',       // Valida que el usuario exista
+           // 'usuario_id' => 'required|exists:users,id',       // Valida que el usuario exista
             'banco_id' => 'required|exists:bancos,id',         // Valida que el banco exista
         ]);
 
         Operacion::create($request->all());
 
-        return redirect()->route('operaciones.index')
+        return redirect()->route('operaciones')
                          ->with('success', 'Operación creada exitosamente.');
     }
 
@@ -91,7 +91,7 @@ class OperacionController extends Controller
 
         $operacion->update($request->all());
 
-        return redirect()->route('operaciones.index')
+        return redirect()->route('operaciones')
                          ->with('success', 'Operación actualizada exitosamente.');
     }
 
@@ -102,7 +102,7 @@ class OperacionController extends Controller
     {
         $operacion->delete();
 
-        return redirect()->route('operaciones.index')
+        return redirect()->route('operaciones')
                          ->with('success', 'Operación eliminada exitosamente.');
     }
 }
