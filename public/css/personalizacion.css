@@ -1,4 +1,8 @@
-/* Contenido de variables-colores.css */
+/* Contenido de personalizacion.css - DISEÑO VERTICAL Y RESPONSIVO */
+
+/* ------------------------------------------- */
+/* 1. VARIABLES DE COLORES */
+/* ------------------------------------------- */
 :root {
   --color-custom-lightest: #F0F3FA;
   --color-custom-paleblue: #D5DEEF;
@@ -7,82 +11,318 @@
   --color-custom-cerulean: #628ECB;
   --color-custom-darkblue: #395886;
 }
+
+/* ------------------------------------------- */
+/* 2. ESTILOS GENERALES */
+/* ------------------------------------------- */
 body {
   background-color: var(--color-custom-paleblue);
 }
 .seccion-principal {
   background-color: var(--color-custom-paleblue);
+  padding: 20px; /* Asegura un padding básico si no lo tienes en plantilla.blade.php */
+  min-height: calc(100vh - 56px); /* Para que ocupe toda la altura visible menos el navbar */
 }
 
-/* Estilos para el botón AÑADIR con el color darkblue */
+/* ------------------------------------------- */
+/* 3. ESTILOS PARA BOTONES */
+/* ------------------------------------------- */
+
+/* Botón con color darkblue (Añadir/Cancelar) */
 .btn-color-custom-darkblue {
   background-color: var(--color-custom-darkblue);
-  color: #fff; /* Define un color de texto que contraste, ej. blanco */
-  border-color: var(--color-custom-darkblue); /* Opcional, para que el borde coincida */
+  color: #fff; /* Texto blanco */
+  border-color: var(--color-custom-darkblue);
+}
+.btn-color-custom-darkblue:hover {
+  background-color: #2a4365; /* Un tono más oscuro de --color-custom-darkblue */
+  color: #fff;
+  border-color: #233853;
+}
+.btn-color-custom-darkblue:focus, .btn-color-custom-darkblue.focus {
+  box-shadow: 0 0 0 0.2rem rgba(57, 88, 134, 0.5); /* Sombra con el color base */
+}
+.btn-color-custom-darkblue:active, .btn-color-custom-darkblue.active {
+  background-color: #233853; /* Aún más oscuro para el estado activo */
+  border-color: #1c2e41;
 }
 
-/* Estilos para las celdas de la tabla (encabezados y datos) */
+/* Botón con color cerulean (Guardar) */
+.btn-color-custom-cerulean {
+  background-color: var(--color-custom-cerulean);
+  color: #fff; /* Texto blanco */
+  border-color: var(--color-custom-cerulean);
+}
+.btn-color-custom-cerulean:hover {
+  background-color: #5076a7; /* Un tono más oscuro de --color-custom-cerulean para hover */
+  color: #fff;
+  border-color: #486994; /* Ajusta el borde en hover */
+}
+.btn-color-custom-cerulean:focus, .btn-color-custom-cerulean.focus {
+  box-shadow: 0 0 0 0.2rem rgba(98, 142, 203, 0.5); /* Sombra con el color base */
+}
+.btn-color-custom-cerulean:active, .btn-color-custom-cerulean.active {
+  background-color: #486994; /* Aún más oscuro para el estado activo */
+  border-color: #3f5b81;
+}
+
+
+/* ------------------------------------------- */
+/* 4. ESTILOS PARA TABLAS */
+/* ------------------------------------------- */
 .tabla-estilizada th,
 .tabla-estilizada td {
   background-color: var(--color-custom-paleblue); /* Fondo azul pálido */
   border-color: var(--color-custom-cerulean);    /* Bordes azul cerúleo */
   color: #212529; /* Color de texto oscuro para contraste */
 }
-
 /* Estilo para el borde exterior de la tabla completa */
 .tabla-estilizada {
   border-color: var(--color-custom-cerulean); /* Bordes azul cerúleo para el exterior */
 }
-
 /* Ajuste para el efecto hover de Bootstrap (.table-hover) */
-/* Esto asegura que el hover se vea bien con tus nuevos colores */
 .tabla-estilizada tbody tr:hover th,
 .tabla-estilizada tbody tr:hover td {
-  background-color: var(--color-custom-lavender); /* Un tono ligeramente más oscuro/diferente para el hover, como tu color lavanda */
-                                                  /* o puedes elegir otro como #c1d2e8 (un tono más oscuro de paleblue) */
+  background-color: var(--color-custom-lavender); /* Un tono ligeramente más oscuro/diferente para el hover */
   color: #212529; /* Mantiene el texto oscuro */
-  /* border-color: var(--color-custom-cerulean); // El color del borde no suele necesitar cambiar en hover */
 }
 
-.btn-color-custom-cerulean {
-  background-color: var(--color-custom-cerulean);
-  color: #fff; /* Texto blanco */
-  border-color: var(--color-custom-cerulean);
+
+/* ****************************************************** */
+/* ESTILOS ESPECÍFICOS DEL DASHBOARD (Diseño Vertical) */
+/* ****************************************************** */
+
+/* General Dashboard Layout */
+.dashboard-container {
+    background-color: #e0e6f6; /* Fondo general similar al de la imagen */
+    min-height: calc(100vh - 56px); /* Ocupa el resto de la altura, ajusta por navbar */
+    padding: 20px; /* Padding general */
+    padding-top: 40px; /* Más padding arriba para espacio con el navbar */
+    display: flex;
+    flex-direction: column; /* SIEMPRE EN COLUMNA para responsividad */
+    align-items: center;
+    overflow-x: hidden; /* Evita scroll horizontal */
+    box-sizing: border-box;
+    padding-bottom: 80px; /* Espacio para el bottom-nav fijo */
 }
 
-.btn-color-custom-cerulean:hover {
-  background-color: #5076a7; /* Un tono más oscuro de --color-custom-cerulean para hover */
-  color: #fff;
-  border-color: #486994; /* Ajusta el borde en hover */
+/* Ajuste para que seccion-principal no agregue padding extra si ya lo tiene dashboard-container */
+.seccion-principal.dashboard-container {
+    padding: 0; /* Dashboard-container manejará su propio padding */
 }
 
-.btn-color-custom-cerulean:focus, .btn-color-custom-cerulean.focus {
-  box-shadow: 0 0 0 0.2rem rgba(98, 142, 203, 0.5); /* Sombra con el color base */
+/* Header (Título "MI CARTERA INTELIGENTE") */
+.header-dashboard {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px; /* Espacio debajo del título */
+    padding-top: 0; /* Ya lo maneja dashboard-container */
+    position: relative; /* Asegura que no se solape con otros elementos si hay algún remanente de posición absoluta */
 }
 
-.btn-color-custom-cerulean:active, .btn-color-custom-cerulean.active {
-  background-color: #486994; /* Aún más oscuro para el estado activo */
-  border-color: #3f5b81;
+.header-title {
+    color: #4A4E69; /* Color de texto oscuro */
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
-/* Estilo para el botón Azul Oscuro Cancelar )  */
-.btn-color-custom-darkblue {
-  background-color: var(--color-custom-darkblue);
-  color: #fff; /* Texto blanco */
-  border-color: var(--color-custom-darkblue);
+/* Balance Total Card */
+.card-balance-total {
+    background-color: #4A4E69; /* Azul oscuro de la tarjeta */
+    color: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Límite para pantallas grandes */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px; /* Espacio debajo de la tarjeta principal */
 }
 
-.btn-color-custom-darkblue:hover {
-  background-color: #2a4365; /* Un tono más oscuro de --color-custom-darkblue */
-  color: #fff;
-  border-color: #233853;
+.balance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
 }
 
-.btn-color-custom-darkblue:focus, .btn-color-custom-darkblue.focus {
-  box-shadow: 0 0 0 0.2rem rgba(57, 88, 134, 0.5); /* Sombra con el color base */
+.balance-label {
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
-.btn-color-custom-darkblue:active, .btn-color-custom-darkblue.active {
-  background-color: #233853; /* Aún más oscuro para el estado activo */
-  border-color: #1c2e41;
+.card-icon {
+    font-size: 1.8rem; /* Tamaño del icono de la cartera */
+}
+
+.balance-amount {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.balance-percentage {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block; /* Para que el fondo solo ocupe el texto */
+}
+
+.balance-percentage.positive {
+    background-color: #6cbf3d; /* Verde para positivo */
+    color: #fff;
+}
+
+.balance-percentage.negative {
+    background-color: #dc3545; /* Rojo para negativo */
+    color: #fff;
+}
+
+.balance-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #d1d1d1;
+}
+
+.action-icon {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Card List (Las tarjetas pequeñas) */
+.card-list {
+    display: flex;
+    flex-direction: column; /* SIEMPRE APILADAS VERTICALMENTE */
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Límite para pantallas grandes */
+    gap: 15px; /* Espacio entre las tarjetas */
+    margin-bottom: 0; /* Ya no necesitamos espacio extra si bottom-nav se maneja con padding del container */
+}
+
+.card-item {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+/* Specific card icon colors */
+.card-icon-purple { background-color: #6a0dad; }
+.card-icon-red { background-color: #dc3545; }
+.card-icon-gray { background-color: #6c757d; }
+
+.card-amounts {
+    flex-grow: 1; /* Ocupa el espacio restante */
+}
+
+.card-current-amount {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-prev-amount {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.card-percentage {
+    text-align: right;
+    font-weight: 600;
+}
+
+.card-percentage-main {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.card-percentage-change {
+    font-size: 0.9rem;
+    padding: 3px 8px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.card-percentage.positive .card-percentage-change {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Texto verde oscuro */
+}
+
+.card-percentage.negative .card-percentage-change {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #721c24; /* Texto rojo oscuro */
+}
+
+
+/* Responsive Layout - ELIMINAMOS FLEX-DIRECTION: ROW aquí, siempre columna */
+@media (min-width: 768px) {
+    .dashboard-container {
+        /* flex-direction: row; -- ELIMINADO para mantener el diseño vertical */
+        justify-content: center;
+        align-items: center; /* Centra los elementos horizontalmente */
+        gap: 30px; /* Espacio entre los bloques si los quisieras más separados */
+        padding-top: 60px; /* Más padding superior en desktop */
+    }
+
+    .card-balance-total, .card-list {
+        width: 90%; /* Mantienen ancho similar, solo que ahora están apilados */
+        max-width: 450px; /* Opcional: para que no se extiendan demasiado en pantallas muy grandes */
+    }
+    .header-dashboard {
+        /* Desactivar posicionamiento absoluto si quieres que fluya normalmente */
+        position: relative; /* O `unset` o simplemente no definir `position` */
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-bottom: 50px; /* Asegura un buen margen debajo del título */
+    }
+}
+
+/* Bottom Navigation (Footer) - RE-AÑADIDO Y FIJO */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4A4E69; /* Color de fondo de la barra inferior */
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.bottom-nav .nav-item {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.bottom-nav .nav-item.active {
+    opacity: 1;
+    /* Puedes añadir un estilo para el activo, como un borde inferior o un color ligeramente diferente */
+    /* border-bottom: 3px solid #F9A826; */
+}
+
+.bottom-nav .nav-item:hover {
+    opacity: 1;
 }
