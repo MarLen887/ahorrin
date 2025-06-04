@@ -23,8 +23,6 @@ return new class extends Migration
             // Claves foráneas:
             // Para id_categoria, cambiaremos a 'categoria_id' para seguir la convención de Laravel
             $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
-            // usuario_id y banco_id ya siguen la convención
-            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade'); // Asumiendo que existe una tabla 'users'
             $table->foreignId('banco_id')->constrained('bancos')->onDelete('cascade');
 
             $table->timestamps(); // Crea columnas created_at y updated_at
