@@ -11,6 +11,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="row mt-3">
             <div class="col-12 col-lg-8 offset-0 offset-lg-2">
                 <div class="table-responsive">
@@ -18,23 +19,23 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Tipo de pago</th>
-                                <th>Banco</th>
+                                <th>Tipo de Operación</th>
+                                <th>Tipo de Pago</th>
                                 <th>Monto</th>
-                                <th>Fecha</th>
-                                <th>Establecimiento</th>
-                                <th>Categoría</th>
+                                 <th>Fecha</th>
+                                 <th>Categoría</th>
+                                <th>Banco</th>
+                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            @php$i = 1;
-
-                            @endphp
+                            @php$i = 1;@endphp
                             @foreach ($operaciones as $row)
                                 <tr>
                                     <td>{{ $i++ }}</td>
-                                    <td>{{ $row->operaciones }}</td>
+                                     <td>{{ $row->tipo_operacion }}</td>
+                                    <td>{{ $row->tipo_pago }}</td> 
                                     <td><!--botón editar-->
                                         <a href="{{ url('operaciones', [$row]) }}" class="btn btn-warning"><i
                                                 class="fa-solid fa-pen"></i></a>
@@ -61,12 +62,20 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                         @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                         <form id="frmOperacion" method="POST" action="{{ url('operaciones') }}">
                             @csrf
                             {{-- Tipo de Operación --}}
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-exchange-alt"></i></span>
-                                {{-- Icono sugerido --}}
                                 <select name="tipo_operacion" class="form-control" required>
                                     <option value="">Seleccione Tipo de Operación</option>
                                     <option value="Ingreso">Ingreso</option>
@@ -82,18 +91,7 @@
                                     <option value="Efectivo">Efectivo</option>
                                 </select>
                             </div>
-                            {{-- Banco --}}
-                            <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="fa-solid fa-credit-card"></i></span>
-                                <select name="banco_id" class="form-control" required>
-                                    <option value="">Seleccione un Banco</option>
-                                    @isset($bancos)
-                                        @foreach ($bancos as $row)
-                                            <option value="{{ $row->id }}">{{ $row->bancos }}</option>
-                                        @endforeach
-                                    @endisset
-                                </select>
-                            </div>
+                           
                             {{-- MONTO --}}
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
@@ -110,22 +108,32 @@
                                 <span class="input-group-text"><i class="fa-solid fa-table"></i></span>
                                 <select name="categoria_id" class="form-control" required>
                                     <option value="">Seleccione una Categoría</option>
-                                    {{-- Asumiendo que pasas $categorias a esta vista --}}
                                     @isset($categorias)
-                                        {{-- Verifica si la variable $categorias existe --}}
-                                        @foreach ($categorias as $categoria)
-                                            <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
-                                            {{-- Ajusta 'nombre' al campo correcto --}}
+                                        @foreach ($categorias as $row)
+                                            <option value="{{ $row->id }}">{{ $row->tipo_categoria }}</option>
                                         @endforeach
                                     @endisset
                                 </select>
+                                 </div>
                                 {{-- Campo oculto para usuario_id si no lo manejas automáticamente en el backend y lo necesitas del form --}}
                                 {{-- Si lo manejas con Auth::id() en el backend, no necesitas esto. --}}
-                                {{-- @auth
+                                 @auth
         <input type="hidden" name="usuario_id" value="{{ Auth::id() }}">
-    @endauth --}}
+    @endauth 
+     {{-- Banco --}}
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="fa-solid fa-credit-card"></i></span>
+                                <select name="banco_id" class="form-control" required>
+                                    <option value="">Seleccione un Banco</option>
+                                     @isset($bancos) 
+                                        @foreach ($bancos as $row)
+                                            <option value="{{ $row->id }}">{{ $row->nombre }}</option>
+                                       @endforeach
+                                @endisset  
+                                </select>
+                            </div>
                                 <div class="d-flex gap-4 col-12 mx-auto justify-content-center">
-                                    <button class="btn btn-color-custom-cerulean"> Guardar</button>
+                                    <button type="submit" class="btn btn-color-custom-cerulean"> Guardar</button>
                                 </div>
                         </form>
                     </div>
